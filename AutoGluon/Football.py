@@ -8,7 +8,7 @@ train_data.head()
 label = 'Yds'
 print("Summary of class variable: \n", train_data[label].describe())
 
-save_path = 'russhingModel-predictClass'  # specifies folder to store trained models
+save_path = 'rushingModel-predictClass-autogluon'  # specifies folder to store trained models
 predictor = TabularPredictor(label=label, path=save_path).fit(train_data)
 
 test_data = TabularDataset('https://docs.google.com/spreadsheets/d/e/2PACX-1vRaYPRkDlXo4_PvOwE55UqyO1oEQP4spBXEPy34mtTixFdgEDmxne0LleWT8hzgqqGDdoi75LWP0DVP/pub?gid=1489051496&single=true&output=csv')
