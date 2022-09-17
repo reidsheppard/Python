@@ -5,3 +5,12 @@ https://docs.google.com/spreadsheets/d/1f-0SyOjlpJRm5hSatzzLOE4kuQG1vYxCFgYWPu-3
 
 Link to Notes Document
 https://docs.google.com/document/d/1AXeyPQSjCPXu5Y7xYkUMa7KVhcJBWwAJ0g0w-Bk7FVo/edit
+
+
+Tools we are using
+https://scikit-learn.org/stable/index.html
+https://auto.gluon.ai/dev/tutorials/tabular_prediction/tabular-multilabel.html
+
+NFL Data Sources
+https://www.pro-football-reference.com/years/2021/opp.htm
+
