@@ -1,3 +1,5 @@
+#these are comments
+
 from autogluon.tabular import TabularDataset, TabularPredictor
 
 train_data = TabularDataset('https://docs.google.com/spreadsheets/d/e/2PACX-1vRaYPRkDlXo4_PvOwE55UqyO1oEQP4spBXEPy34mtTixFdgEDmxne0LleWT8hzgqqGDdoi75LWP0DVP/pub?gid=1767393397&single=true&output=csv')
