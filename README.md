@@ -14,3 +14,5 @@ https://auto.gluon.ai/dev/tutorials/tabular_prediction/tabular-multilabel.html
 NFL Data Sources
 https://www.pro-football-reference.com/years/2021/opp.htm
 
+
+https://www.kaggle.com/code/xhlulu/ticket-price-prediction-with-scikit-learn/notebook
