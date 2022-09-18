@@ -4,3 +4,4 @@ russhingModel-predictClass/models/NeuralNetTorch/net.params
 russhingModel-predictClass/models/XGBoost/xgb.ubj
 rushingModel-predictClass-autogluon/models/XGBoost/xgb.ubj
 rushingModel-predictClass-autogluon/__version__
+rushingModel-predictClass-autogluon/models/NeuralNetTorch/net.params
