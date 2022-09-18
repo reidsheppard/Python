@@ -2,3 +2,4 @@ russhingModel-predictClass/__version__
 *.pkl
 russhingModel-predictClass/models/NeuralNetTorch/net.params
 russhingModel-predictClass/models/XGBoost/xgb.ubj
+rushingModel-predictClass-autogluon/models/XGBoost/xgb.ubj
