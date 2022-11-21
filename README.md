@@ -1,9 +1,14 @@
 # Python
 Machine Learning Project using Sk-learn to predict Sports Statistics.
 
-Using raw data from pro-football-focus to predict rushing yards. 
-Nick Chubb is the use case. Using variables selected to predict rushing yards in 
-each of his career games. Comparing the predicted rushing yards to the actual rushing yards.
+Using raw data from pro-football-focus to predict rushing yards in the NFL.
+Nick Chubb is the use case, and various factors are used to predict his rushing yards 
+in each of his career games. This data will then be compared to the actual rushing yards.
+
+Methods:
+A regression model will be used from Sk-learn, and Auto-Gluon, to make predictions. There will
+be a training and test dataset. Training dataset will be train the model, and the test data will
+be used to collect the predicted yards.
 
 Link to Data Document 
 https://docs.google.com/spreadsheets/d/1f-0SyOjlpJRm5hSatzzLOE4kuQG1vYxCFgYWPu-3jf0/edit#gid=1757234728
