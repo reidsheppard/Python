@@ -14,52 +14,80 @@ from sklearn.experimental import enable_iterative_imputer
 from sklearn.impute import KNNImputer
 from sklearn import preprocessing
 from sklearn.ensemble import RandomForestRegressor
- 
- 
-trainingData = pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vRaYPRkDlXo4_PvOwE55UqyO1oEQP4spBXEPy34mtTixFdgEDmxne0LleWT8hzgqqGDdoi75LWP0DVP/pub?gid=1879927646&single=true&output=csv', index_col=0)
-testData = pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vRaYPRkDlXo4_PvOwE55UqyO1oEQP4spBXEPy34mtTixFdgEDmxne0LleWT8hzgqqGDdoi75LWP0DVP/pub?gid=1056049758&single=true&output=csv', index_col=0)
- 
-# What it uses to fill in missing values, for future games
-imputer = KNNImputer(n_neighbors=4)
- 
-label = 'Yds'
 
-y_train = trainingData[label] # values to predict
-x_train = trainingData.drop(columns=[label]) # features
- 
-y_test = testData[label]
-x_test = testData.drop(columns=[label]) # features
 
- 
- 
-model = LinearRegression()
-model.fit(x_train, y_train)
- 
-predictions = model.predict(x_test)
- 
-print("Actual yards") 
-j = 1 
-for x in y_test:
-   print(j, "\t",x)
-   j+=1
 
-print()   
+class Player: 
+   label = 'Yds'
+   trainingData = None
+   testData = None
+   def __init__(self, train, test):
+      Player.trainingData = pd.read_csv(train,index_col=0)
+      Player.testData = pd.read_csv(test,index_col=0)
+ 
+   def train(train):
+      trainingData = pd.read_csv(train,index_col=0)
+      Player.y_train = trainingData[Player.label] # values to predict
+      Player.x_train = trainingData.drop(columns=[Player.label]) # features
 
-print("predictions")
-i = 1
-print("Game      Yds predicted")
-for x in predictions:
-   print(i, "\t",x)
-   i+=1
- 
+   def test(test):
+      testData = pd.read_csv(test,index_col=0)
+      Player.y_test = testData[Player.label]
+      Player.x_test = testData.drop(columns=[Player.label]) # features
 
+   def predict(features):
+      # trainingData = pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vQQ6B026KVaZ2LrEZOq_eVe4mJN5kvvb48qitdightknV8DUnypVyfnPBjTvfpcGgds5ny_rSlR_NS4/pub?gid=1129893861&single=true&output=csv',index_col=0)
+      Player.y_train = Player.trainingData[Player.label] # values to predict
+      Player.x_train = Player.trainingData.drop(columns=[Player.label]) # features
+
+      # testData = pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vQQ6B026KVaZ2LrEZOq_eVe4mJN5kvvb48qitdightknV8DUnypVyfnPBjTvfpcGgds5ny_rSlR_NS4/pub?gid=1876485471&single=true&output=csv',index_col=0)
+      # Player.y_test = testData[Player.label]
+      Player.x_test = Player.testData.drop(columns=[Player.label])
+
+      model = LinearRegression()
+      model.fit(Player.x_train, Player.y_train)
+      Player.predictions = model.predict(Player.x_test)
+
+
+   def print():
+      print(Player.predictions)
+
+p1 = Player('https://docs.google.com/spreadsheets/d/e/2PACX-1vQQ6B026KVaZ2LrEZOq_eVe4mJN5kvvb48qitdightknV8DUnypVyfnPBjTvfpcGgds5ny_rSlR_NS4/pub?gid=1129893861&single=true&output=csv', 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQQ6B026KVaZ2LrEZOq_eVe4mJN5kvvb48qitdightknV8DUnypVyfnPBjTvfpcGgds5ny_rSlR_NS4/pub?gid=1876485471&single=true&output=csv')
+p1.predict()
+print(p1.predictions)
+
+
+'''
+class Player: 
+   label = 'Yds'
+
+   def __init__(self, train, test):
+      self.trainingData = pd.read_csv(train, index_col=0)
+      self.testData = pd.read_csv(test, index_col=0)
  
-print('mean_squared_error : ', mean_squared_error(y_test, predictions))
-print('mean_absolute_error : ', mean_absolute_error(y_test, predictions))
- 
- 
- 
-# training the data
-# imputer.fit(trainingData)
-# transformed_testData = imputer.transform(testData)
- 
+   def train(self):
+      self.y_train = self.trainingData[Player.label] # values to predict
+      self.x_train = self.trainingData.drop(columns=[Player.label]) # features
+
+   def test(self):
+      self.y_test = self.testData[Player.label]
+      self.x_test = self.testData.drop(columns=[Player.label]) # features
+
+   def predict(self):
+      self.train()
+      self.test()
+
+      model = LinearRegression()
+      model.fit(self.x_train, self.y_train)
+      self.predictions = model.predict(self.x_test)
+
+   def print_predictions(self):
+      print(self.predictions)
+
+train_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQQ6B026KVaZ2LrEZOq_eVe4mJN5kvvb48qitdightknV8DUnypVyfnPBjTvfpcGgds5ny_rSlR_NS4/pub?gid=1129893861&single=true&output=csv'
+test_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQQ6B026KVaZ2LrEZOq_eVe4mJN5kvvb48qitdightknV8DUnypVyfnPBjTvfpcGgds5ny_rSlR_NS4/pubhtml?gid=1876485471&single=true'
+
+p1 = Player(train_url, test_url)
+p1.predict()
+p1.print_predictions()
+'''
