@@ -14,28 +14,43 @@ from sklearn.experimental import enable_iterative_imputer
 from sklearn.impute import KNNImputer
 from sklearn import preprocessing
 from sklearn.ensemble import RandomForestRegressor
+from Player import Player
+from Game import Game
+from FetchFootballData import FetchFootballData
+
+
+Players = FetchFootballData.fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vQQ6B026KVaZ2LrEZOq_eVe4mJN5kvvb48qitdightknV8DUnypVyfnPBjTvfpcGgds5ny_rSlR_NS4/pub?gid=1874466671&single=true&output=csv')
+for player in Players:
+    player.print_player()
+    print()
+    player.train()
+    player.test()
+    player.predict()
+    player.printPredictions()
+    print()
+    print()
 
 
 
-class Player: 
-   label = 'Yds'
-   trainingData = None
-   testData = None
-   def __init__(self, train, test):
+
+
+label = 'Yds'
+trainingData = None
+testData = None
+def __init__(self, train, test):
       Player.trainingData = pd.read_csv(train,index_col=0)
       Player.testData = pd.read_csv(test,index_col=0)
  
-   def train(train):
+def train(train):
       trainingData = pd.read_csv(train,index_col=0)
       Player.y_train = trainingData[Player.label] # values to predict
       Player.x_train = trainingData.drop(columns=[Player.label]) # features
-
-   def test(test):
+def test(test):
       testData = pd.read_csv(test,index_col=0)
       Player.y_test = testData[Player.label]
       Player.x_test = testData.drop(columns=[Player.label]) # features
 
-   def predict(features):
+def predict(features):
       # trainingData = pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vQQ6B026KVaZ2LrEZOq_eVe4mJN5kvvb48qitdightknV8DUnypVyfnPBjTvfpcGgds5ny_rSlR_NS4/pub?gid=1129893861&single=true&output=csv',index_col=0)
       Player.y_train = Player.trainingData[Player.label] # values to predict
       Player.x_train = Player.trainingData.drop(columns=[Player.label]) # features
@@ -49,12 +64,12 @@ class Player:
       Player.predictions = model.predict(Player.x_test)
 
 
-   def print():
+def print():
       print(Player.predictions)
 
-p1 = Player('https://docs.google.com/spreadsheets/d/e/2PACX-1vQQ6B026KVaZ2LrEZOq_eVe4mJN5kvvb48qitdightknV8DUnypVyfnPBjTvfpcGgds5ny_rSlR_NS4/pub?gid=1129893861&single=true&output=csv', 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQQ6B026KVaZ2LrEZOq_eVe4mJN5kvvb48qitdightknV8DUnypVyfnPBjTvfpcGgds5ny_rSlR_NS4/pub?gid=1876485471&single=true&output=csv')
-p1.predict()
-print(p1.predictions)
+# p1 = Player('https://docs.google.com/spreadsheets/d/e/2PACX-1vQQ6B026KVaZ2LrEZOq_eVe4mJN5kvvb48qitdightknV8DUnypVyfnPBjTvfpcGgds5ny_rSlR_NS4/pub?gid=1129893861&single=true&output=csv', 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQQ6B026KVaZ2LrEZOq_eVe4mJN5kvvb48qitdightknV8DUnypVyfnPBjTvfpcGgds5ny_rSlR_NS4/pub?gid=1876485471&single=true&output=csv')
+# p1.predict()
+# print(p1.predictions)
 
 
 '''
