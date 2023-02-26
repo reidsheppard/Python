@@ -31,7 +31,7 @@ class Player:
 
     def test(self):
       self.testData = pd.read_csv(self.testData,index_col=0)
-      selfyTest = self.testData[self.label]
+      self.Test = self.testData[self.label]
       self.xTest = self.testData.drop(columns=[self.label]) # features
 
     def predict(self):
@@ -46,5 +46,6 @@ class Player:
       self.model = LinearRegression()
       self.model.fit(self.xTrain, self.yTrain)
       Player.predictions = self.model.predict(self.xTest)
+
     def printPredictions(self):
         print(f"Predictions: {Player.predictions}")
