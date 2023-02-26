@@ -1,6 +1,8 @@
 from Game import Game
 from sklearn.linear_model import LinearRegression
 import pandas as pd
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 class Player:
     label = 'Yds'
     yTrain = None
@@ -45,7 +47,7 @@ class Player:
 
       self.model = LinearRegression()
       self.model.fit(self.xTrain, self.yTrain)
-      Player.predictions = self.model.predict(self.xTest)
+      self.predictions = self.model.predict(self.xTest)
 
     def printPredictions(self):
-        print(f"Predictions: {Player.predictions}")
+        print(f"Predictions: {self.predictions}")
