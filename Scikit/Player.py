@@ -1,8 +1,5 @@
-from Game import Game
-from sklearn.linear_model import LinearRegression
-import pandas as pd
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+from BasePredictor import BasePredictor
+
 class Player:
     label = 'Yds'
     yTrain = None
@@ -10,6 +7,8 @@ class Player:
     yTest = None
     xTest = None
     model = None
+    predictor = None
+    toolKit = None
     def __init__(self, name, team, ID, testData, trainData, allData):
         self.name = name
         self.team = team
@@ -27,27 +26,13 @@ class Player:
         print(f"All data: {self.allData}")
 
     def train(self):
-      self.trainData = pd.read_csv(self.trainData,index_col=0)
-      self.yTrain = self.trainData[self.label] # values to predict
-      self.xTrain = self.trainData.drop(columns=[self.label]) # features
+      self.predictor.train()
 
     def test(self):
-      self.testData = pd.read_csv(self.testData,index_col=0)
-      self.Test = self.testData[self.label]
-      self.xTest = self.testData.drop(columns=[self.label]) # features
+      self.predictor.test()
 
     def predict(self):
-      # trainingData = pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vQQ6B026KVaZ2LrEZOq_eVe4mJN5kvvb48qitdightknV8DUnypVyfnPBjTvfpcGgds5ny_rSlR_NS4/pub?gid=1129893861&single=true&output=csv',index_col=0)
-      self.yTrain = self.trainData[self.label] # values to predict
-      self.xTrain = self.trainData.drop(columns=[self.label]) # features
-
-      # testData = pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vQQ6B026KVaZ2LrEZOq_eVe4mJN5kvvb48qitdightknV8DUnypVyfnPBjTvfpcGgds5ny_rSlR_NS4/pub?gid=1876485471&single=true&output=csv',index_col=0)
-      # Player.y_test = testData[Player.label]
-      self.xTest = self.testData.drop(columns=[self.label])
-
-      self.model = LinearRegression()
-      self.model.fit(self.xTrain, self.yTrain)
-      self.predictions = self.model.predict(self.xTest)
+      self.predictor.predict()
 
     def printPredictions(self):
-        print(f"Predictions: {self.predictions}")
+      self.predictor.printPredictions()

@@ -12,7 +12,7 @@ class FetchFootballData:
             next(reader)
             for row in reader:
                 # Extract data from the row
-                playerId, name, team, testData, trainData, allData = row
+                playerId, name, team, testData, trainData, allData= row
                 # Create a new Player object and add it to the list
                 player = Player(name, team, playerId, testData, trainData, allData)
                 players.append(player)
