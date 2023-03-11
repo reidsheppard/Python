@@ -31,6 +31,9 @@ class AutoPredictor(BasePredictor):
     def printPredictions(self):
         print(f"Predictions: {self.predictions}")
     
+    def featureImportance(self):
+        print(self.predictor.feature_importance(self.trainData))
+    
    
 '''
 trainData = TabularDataset('https://docs.google.com/spreadsheets/d/e/2PACX-1vRaYPRkDlXo4_PvOwE55UqyO1oEQP4spBXEPy34mtTixFdgEDmxne0LleWT8hzgqqGDdoi75LWP0DVP/pub?gid=1767393397&single=true&output=csv')

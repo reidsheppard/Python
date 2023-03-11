@@ -31,3 +31,6 @@ class BasePredictor:
     def printPredictions(self):
         return
     
+    def featureImportance(self):
+        return
+    

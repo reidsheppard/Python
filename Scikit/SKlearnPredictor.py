@@ -35,3 +35,6 @@ class SKlearnPredictor(BasePredictor):
 
     def printPredictions(self):
         print(f"Predictions: {self.predictions}")
+        
+    def featureImportance(self):
+        return

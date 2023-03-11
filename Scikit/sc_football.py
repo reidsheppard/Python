@@ -27,8 +27,13 @@ def runPredictions(predictor,player):
     predictor.test()
     predictor.predict()
     predictor.printPredictions()
-
+    predictor.featureImportance()
+Player
 Players = FetchFootballData.fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vQQ6B026KVaZ2LrEZOq_eVe4mJN5kvvb48qitdightknV8DUnypVyfnPBjTvfpcGgds5ny_rSlR_NS4/pub?gid=1874466671&single=true&output=csv')
+chubb = Players[0]
+auto = AutoPredictor(chubb)
+runPredictions(auto, chubb)
+'''
 for player in Players:
     player.print_player()
     Auto = AutoPredictor(player)
@@ -36,3 +41,4 @@ for player in Players:
     runPredictions(SK, player)
     runPredictions(Auto, player)
     print()
+    '''
