@@ -19,6 +19,7 @@ from Game import Game
 from FetchFootballData import FetchFootballData
 from SKlearnPredictor import SKlearnPredictor
 from AutoPredictor import AutoPredictor
+from PredictionWriter import PredictionWriter
 
 def runPredictions(predictor,player):
     print()
@@ -28,17 +29,21 @@ def runPredictions(predictor,player):
     predictor.predict()
     predictor.printPredictions()
     predictor.featureImportance()
+    predictor.savePredictions()
+    #PredictionWriter(predictor.getPredictions())
+    
 Player
 Players = FetchFootballData.fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vQQ6B026KVaZ2LrEZOq_eVe4mJN5kvvb48qitdightknV8DUnypVyfnPBjTvfpcGgds5ny_rSlR_NS4/pub?gid=1874466671&single=true&output=csv')
 chubb = Players[0]
-auto = AutoPredictor(chubb)
-runPredictions(auto, chubb)
-'''
-for player in Players:
-    player.print_player()
-    Auto = AutoPredictor(player)
-    SK = SKlearnPredictor(player)
-    runPredictions(SK, player)
-    runPredictions(Auto, player)
-    print()
-    '''
+chubb.print_player()
+Auto = AutoPredictor(chubb)
+runPredictions(Auto, chubb)
+print()
+
+#for player in Players:
+    #player.print_player()
+    #Auto = AutoPredictor(player)
+    #SK = SKlearnPredictor(player)
+    #runPredictions(SK, player)
+    #runPredictions(Auto, player)
+    #print()

@@ -8,6 +8,14 @@ class BasePredictor:
     yTest = None
     xTest = None
     model = None
+    predictions = None
+    name = None
+    team = None
+    ID = None
+    testData = None
+    trainData = None
+    allData = None
+
     def __init__(self, player):
         self.name = player.name
         self.team = player.team
@@ -32,5 +40,11 @@ class BasePredictor:
         return
     
     def featureImportance(self):
+        return
+
+    def getPredictions(self):
+        return
+    
+    def savePredictions(self):
         return
     

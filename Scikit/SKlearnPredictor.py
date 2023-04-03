@@ -9,6 +9,7 @@ class SKlearnPredictor(BasePredictor):
     yTest = None
     xTest = None
     model = None
+    predictions = None
 
     def train(self):
       self.trainData = pd.read_csv(self.trainData,index_col=0)
@@ -38,3 +39,6 @@ class SKlearnPredictor(BasePredictor):
         
     def featureImportance(self):
         return
+    
+    def getPredictions(self):
+       return self.predictions
